@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diabetes Risk Prediction</title>
+</head>
+<style>
+    h1{text-align:center;}
+    body{background:linear-gradient(to right,#00BFFF,#FFD700);
+     font-family:Arial,sans-serif;
+     margin:0;
+     padding:20px;}
+
+div{width: 320px;
+  height: 50px;
+  padding: 10px;
+  border-radius: 5px solid gray;
+  margin:   0;}
+
+.result-box{
+        width:300px;
+        padding:10px;
+        border:2px solid black;
+        border-radius:10px;
+        background-color:lightcyan;
+        text-align:center;
+        font-weight:bold;
+    }
+
+.success{
+    background-color:rgb(45, 254, 42);
+    color:#fff700;
+    border: 2px solid darkgreen;
+}
+
+.danger{
+    background-color: rgb(254, 2, 2);
+    color:#fff700;
+    border: 2px solid darkred;
+}
+
+</style>
+
+<body>
+
+    <h2>Diabetes Risk Prediction System</h2>
+
+    <!-- Form starts -->
+    <form action="/predict" method="post">
+
+        <!-- Glucose input -->
+        <label>Glucose Level:</label>
+        <input type="number" name="Glucose" required>
+        <br><br>
+
+        <!-- Blood Pressure input -->
+        <label>Blood Pressure:</label>
+        <input type="number" name="BloodPressure" required>
+        <br><br>
+
+        <!-- BMI input -->
+        <label>BMI:</label>
+        <input type="number" step="0.1" name="BMI" required>
+        <br><br>
+
+        <!-- Age input -->
+        <label>Age:</label>
+        <input type="number" name="Age" required>
+        <br><br>
+
+        <!-- Submit button -->
+        <button type="submit">Predict</button>
+</form><br>
+
+    <!-- Result from Flask -->
+     {% if result %}
+    <div class="result-box {{status}}">
+    <h3>{{ result }}</h3>
+    </div>
+    {% endif %}
+</body>
+</html>
